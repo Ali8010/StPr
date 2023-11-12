@@ -50,21 +50,21 @@ def section2():
     st.plotly_chart(line_chart)
 
     st.subheader(':green[___________________________________________________]')
-    ### --- bar-chart ---  
-    st.success('**:green[B A R - C H A R T: choose from the criteria below for the chart]**')
+    ### --- treemap-chart ---   
+    st.success('**:green[T R E E M A P - C H A R T: choose from the criteria below for the chart]**')
     selected_state2 = st.selectbox('Select the state please:', all_s['state'].unique())
     selected_years2 = st.selectbox('Select the year please:', all_s['years'].unique())
     filtered_data2 = all_s[
         (all_s['state'] == selected_state2) &
         ( all_s['years'] == selected_years2)
     ]
-    bar_chart = px.bar(filtered_data2,
+    treemap_chart = px.treemap(filtered_data2,
                    path=[ 'degree', 'sex', 'numbers'], 
                    values='numbers')
                    #text='numbers',
                    #color_discrete_sequence = ['#F63366']*len(all_s)
                    #template= 'plotly_white')
-    st.plotly_chart(bar_chart)
+    st.plotly_chart(treemap_chart)
     st.subheader(':green[___________________________________________________]')
     
     ### --- pie-chart ---
