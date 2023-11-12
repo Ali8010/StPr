@@ -50,7 +50,7 @@ def section2():
     st.plotly_chart(line_chart)
 
     st.subheader(':green[___________________________________________________]')
-    ### --- barmap-chart ---  
+    ### --- bar-chart ---  
     st.success('**:green[B A R - C H A R T: choose from the criteria below for the chart]**')
     selected_state2 = st.selectbox('Select the state please:', all_s['state'].unique())
     selected_years2 = st.selectbox('Select the year please:', all_s['years'].unique())
@@ -67,15 +67,15 @@ def section2():
     st.plotly_chart(bar_chart)
     st.subheader(':green[___________________________________________________]')
     
-    ### --- pie-chart ---  
+    ### --- pie-chart ---
     st.success('**:green[P I E - C H A R T: choose from the criteria below for the chart]**')
     selected_years = st.selectbox('Select the year:', all_s['years'].unique())
     selected_degree3 = st.selectbox('Select the degree:', all_s['degree'].unique())
-    filtered_data3 = all_s[ (all_s['degree'] == selected_degree3) & (all_s['years'] == selected_years)]
+    filtered_data3 = all_s[ (all_s['degree'] == selected_degree3) | (all_s['years'] == selected_years)]
     pie_chart = px.pie(filtered_data3,
-                title='The ratio of degree during the above year',
-                values='numbers',
-                names='state')
+                        title='The ratio of degree during the above year',
+                        values='numbers',
+                        names='state')
     st.plotly_chart(pie_chart)
     st.subheader(':green[___________________________________________________]')
 
