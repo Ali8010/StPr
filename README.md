@@ -1,2 +1,1 @@
-# StPr
-Students Prediction 
+# student
