@@ -50,7 +50,7 @@ def section2():
     st.plotly_chart(line_chart)
 
     st.subheader(':green[___________________________________________________]')
-    ### --- treemap-chart ---  
+    ### --- barmap-chart ---  
     st.success('**:green[B A R - C H A R T: choose from the criteria below for the chart]**')
     selected_state2 = st.selectbox('Select the state please:', all_s['state'].unique())
     selected_years2 = st.selectbox('Select the year please:', all_s['years'].unique())
@@ -58,7 +58,7 @@ def section2():
         (all_s['state'] == selected_state2) &
         ( all_s['years'] == selected_years2)
     ]
-    treemap_chart = px.bar(filtered_data2,
+    bar_chart = px.bar(filtered_data2,
                    path=[ 'degree', 'sex', 'numbers'], 
                    values='numbers')
                    #text='numbers',
