@@ -1,16 +1,15 @@
-### --- This work for 704 - streamlit project --- By Ali and Omar
-
+### --- This work for 704 - streamlit project --- 
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-### --- load excel table --- By Majed
+### --- load excel table --- 
 excel_file = 'student.xlsx'
 sheet_name1 = 'data'
 sheet_name2 = 'new'
 sheet_name3 = 'grad'
 
-### --- define table sheets --- By Majed
+### --- define table sheets --- 
 all_s = pd.read_excel(excel_file,
                                 sheet_name=sheet_name1)
 new_s = pd.read_excel(excel_file,
@@ -20,7 +19,7 @@ grad_s = pd.read_excel(excel_file,
 
 
 def section1():
-    ### --- show the tables to the user --- By Majed
+    ### --- show the tables to the user --- 
     st.subheader(':blue[___________________________________________________]')
     st.info('**:blue[Table 1-1: Enrolled students in higher education for the past 15 years]**')
     st.dataframe(new_s)
@@ -30,8 +29,8 @@ def section1():
     st.subheader(':blue[___________________________________________________]')
 
 def section2():
-    ### --- start the choices for the charts --- By Majed
-    ### --- line-chart --- By Majed
+    ### --- start the choices for the charts --- 
+    ### --- line-chart --- 
     st.subheader(':green[___________________________________________________]')
     st.success('**:green[L I N E - C H A R T: choose from the criteria below for the chart]**')
     selected_state = st.selectbox('Select the state of the student:', all_s['state'].unique())
@@ -51,24 +50,24 @@ def section2():
     st.plotly_chart(line_chart)
 
     st.subheader(':green[___________________________________________________]')
-    ### --- treemap-chart --- By Majed    
-    st.success('**:green[T R E E M A P - C H A R T: choose from the criteria below for the chart]**')
+    ### --- treemap-chart ---  
+    st.success('**:green[B A R - C H A R T: choose from the criteria below for the chart]**')
     selected_state2 = st.selectbox('Select the state please:', all_s['state'].unique())
     selected_years2 = st.selectbox('Select the year please:', all_s['years'].unique())
     filtered_data2 = all_s[
         (all_s['state'] == selected_state2) &
         ( all_s['years'] == selected_years2)
     ]
-    treemap_chart = px.treemap(filtered_data2,
+    treemap_chart = px.bar(filtered_data2,
                    path=[ 'degree', 'sex', 'numbers'], 
                    values='numbers')
                    #text='numbers',
                    #color_discrete_sequence = ['#F63366']*len(all_s)
                    #template= 'plotly_white')
-    st.plotly_chart(treemap_chart)
+    st.plotly_chart(bar_chart)
     st.subheader(':green[___________________________________________________]')
     
-    ### --- pie-chart --- By Majed    
+    ### --- pie-chart ---  
     st.success('**:green[P I E - C H A R T: choose from the criteria below for the chart]**')
     selected_years = st.selectbox('Select the year:', all_s['years'].unique())
     selected_degree3 = st.selectbox('Select the degree:', all_s['degree'].unique())
@@ -81,8 +80,8 @@ def section2():
     st.subheader(':green[___________________________________________________]')
 
 def section3():
-    ### --- start the prediction part --- By Majed
-    ### --- input choices from the user --- By Majed
+    ### --- start the prediction part ---
+    ### --- input choices from the user --- 
     st.subheader(':red[___________________________________________________]')
     st.error('**:red[Please choose the criteria below for the graduates prediction]**')
     selected_degree2 = st.selectbox('Select the degree of enrolled student:', all_s['degree'].unique())
@@ -90,12 +89,12 @@ def section3():
     write_number = st.number_input("Enter the number of enrolled students:")
     st.caption('______________________________________________')
 
-    ### --- state if conditions for the prediction --- By Majed
+    ### --- state if conditions for the prediction --- 
     result = 0
     if write_number == 0:
         st.subheader('**:red[You have to inter a positive number for enrolled students]**')
     elif write_number <= 0:
-        st.subheader('**:red[:smile:يا وااااااااد قووووووووم يا وااااااااد]**')
+        st.subheader('**:red[:smile:hhhhh يا وااااااااد قووووووووم يا وااااااااد]**')
     elif (selected_degree2 == "PhD" and selected_sex2 == "Male"):
         result = write_number * 0.1
     elif (selected_degree2 == "PhD" and selected_sex2 == "Female"):
@@ -118,13 +117,13 @@ def section3():
     st.subheader(':red[___________________________________________________]')
     
 def main():
-    ### --- Page introduction --- By Majed
+    ### --- Page introduction --- 
     st.set_page_config(page_title='Students Prediction')
     st.subheader('___________________________________________________')
     st.subheader(':rainbow[Statistics of Enrolled and Graduated Students in Saudi Universities During the Past 15 Years :student:]')
-    st.markdown('**STREAMLIT-PROJECT: DONE ® 2023 BY:** ***ALL 704 STUDENTS***')
+    st.markdown('**STREAMLIT-PROJECT: DONE ® 2023 BY:** ***Ali Alharbi***')
 
-    # Create buttons in the sidebar --- By Majed
+    # Create buttons in the sidebar --- 
     st.sidebar.subheader('Select any page from below:')
     selected_section = st.sidebar.radio(
                     "", 
@@ -136,10 +135,10 @@ def main():
                     ":red[ـــــــــــــــــــــــــــــــــــــــــــــــــــ]"])
     st.sidebar.markdown('________________________________')
     st.sidebar.markdown('Students Data Resource from SAMA: https://sama.gov.sa/en-us/economicreports/pages/report.aspx?cid=127#')
-    st.sidebar.markdown('Download all files from GitHub: https://github.com/majidphd/student/tree/main')
+    st.sidebar.markdown('Download all files from GitHub: https://github.com/MyPage')
     st.sidebar.markdown('Deploy your app from Streamlit: https://share.streamlit.io/')
    
-    # Display the selected section --- By Majed
+    # Display the selected section --- 
     if selected_section == ":blue[Student data over 15 years]":
         section1()
     elif selected_section == ":green[Charts for Students]":
