@@ -135,7 +135,7 @@ def main():
                     ":red[ـــــــــــــــــــــــــــــــــــــــــــــــــــ]"])
     st.sidebar.markdown('________________________________')
     st.sidebar.markdown('Students Data Resource from SAMA: https://sama.gov.sa/en-us/economicreports/pages/report.aspx?cid=127#')
-    st.sidebar.markdown('Download all files from GitHub: https://github.com/MyPage')
+    st.sidebar.markdown('Download all files from GitHub: https://github.com/Ali8010/StPr/tree/main')
     st.sidebar.markdown('Deploy your app from Streamlit: https://share.streamlit.io/')
    
     # Display the selected section --- 
